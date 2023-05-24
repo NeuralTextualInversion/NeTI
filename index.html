@@ -148,17 +148,17 @@
                           concept is represented within the generative process. This choice greatly affects the visual fidelity, downstream editability,
                           and disk space needed to store the learned concept. In this paper, we explore a new text-conditioning space that is
                           dependent on both the denoising process timestep (time) and the denoising U-Net layers (space) and showcase its compelling
-                          properties. A single concept in the space-time representation is composed of hundreds of vectors, one for each combination 
-                          of time and space, making this space challenging to optimize directly. Instead, we propose to implicitly represent a 
-                          concept in this space by optimizing a small neural mapper that receives the current time and space parameters and outputs 
-                          the matching token embedding. In doing so, the entire personalized concept is represented by the parameters of the learned 
-                          mapper, resulting in a compact, yet expressive, representation. Similarly to other personalization methods, the output of 
-                          our neural mapper resides in the input space of the text encoder. We observe that one can significantly improve the 
-                          convergence and visual fidelity of the concept by introducing a textual bypass, where our neural mapper additionally outputs 
-                          a residual that is added to the output of the text encoder. Finally, we show how one can impose an importance-based ordering 
-                          over our implicit representation, providing users control over the reconstruction and editability of the learned concept using 
-                          a single trained model. We demonstrate the effectiveness of our approach over a range of concepts and prompts, showing our 
-                          method's ability to generate high-quality and controllable compositions without fine-tuning any parameters of the generative 
+                          properties. A single concept in the space-time representation is composed of hundreds of vectors, one for each combination
+                          of time and space, making this space challenging to optimize directly. Instead, we propose to implicitly represent a
+                          concept in this space by optimizing a small neural mapper that receives the current time and space parameters and outputs
+                          the matching token embedding. In doing so, the entire personalized concept is represented by the parameters of the learned
+                          mapper, resulting in a compact, yet expressive, representation. Similarly to other personalization methods, the output of
+                          our neural mapper resides in the input space of the text encoder. We observe that one can significantly improve the
+                          convergence and visual fidelity of the concept by introducing a textual bypass, where our neural mapper additionally outputs
+                          a residual that is added to the output of the text encoder. Finally, we show how one can impose an importance-based ordering
+                          over our implicit representation, providing users control over the reconstruction and editability of the learned concept using
+                          a single trained model. We demonstrate the effectiveness of our approach over a range of concepts and prompts, showing our
+                          method's ability to generate high-quality and controllable compositions without fine-tuning any parameters of the generative
                           model itself.
                         </p>
                     </div>
@@ -184,7 +184,7 @@
     <section class="hero is-small">
         <div class="hero-body">
             <div class="container">
-                <h2 class="title has-text-centered">Examples of Personalized Text-to-Image Generation with NeTI
+                <h2 class="title has-text-centered">Examples of Personalized Text-to-Image Generation <br> with NeTI
                 </h2>
                 <div id="results-carousel" class="carousel results-carousel">
                     <div class="column is-centered has-text-centered">
@@ -231,7 +231,7 @@
                     </div>
                     <ul class="column is-centered has-text-justified">
                       <li> We introduce a new text-conditioning latent space \(\mathcal{P}^*\) that is dependent on both the
-                           denoising process timestep and the U-Net layers. 
+                           denoising process timestep and the U-Net layers.
                       </li>
                       <br>
                       <li> This <i>space-time</i> representation is learned implicitly via a small mapping network.
@@ -251,78 +251,84 @@
         </div>
     </section>
 
-
-    <section class="hero is-small">
-      <div class="hero-body">
-          <div class="container">
+    <section class="section hero">
+        <div class="hero-body">
+        <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
-            <div class="column is-four-fifths">
-                <h2 class="title has-text-centered">What Can it Do? </h2>
-
-                <br>
-                <h3 class="title is-4">Controlling the Editability with Nested Dropout</h3>
-                <p class="content has-text-centered">
-                    Using our dropout technique, users can control the balance between the generated image's visual
-                    and text fidelity at inference time.
-                    When a stronger dropout is applied we get a more coarse/semantic representation of our concept
-                    that is more amenable to edits and new compositions.
-                </p>
-
-                <div id="results-carousel" class="carousel results-carousel">
-                  <div class="column is-centered has-text-centered">
-                    <img src="static/figures/dropout_0.png" alt="dropout_0" width="80%"/>
-                  </div>
-                  <div class="column is-centered has-text-centered">
-                      <img src="static/figures/dropout_1.png" alt="dropout_1" width="80%"/>
-                  </div>
-                  <div class="column is-centered has-text-centered">
-                      <img src="static/figures/dropout_2.png" alt="dropout_2" width="80%"/>
-                  </div>
-                  <div class="column is-centered has-text-centered">
-                      <img src="static/figures/dropout_3.png" alt="dropout_3" width="90%"/>
-                  </div>
-                </div>
-
-
-                <br>
-                <h3 class="title is-4">Per-Timestep Decomposition</h3>
-                <p class="content has-text-centered">
-                  We can illustrate which concept-specific details are captured at different denoising timesteps.  
-                  At the early timesteps, NeTI learns to capture coarse details such as the concept's general structure and color scheme. 
-                  As we continue along the denoising process, more concept-specific details are added.
-                </p>
-
-                <div id="results-carousel" class="carousel results-carousel">
-                  <div class="column is-centered has-text-centered">
-                    <img src="static/figures/decomposition_1.png" alt="decomposition_1" width="80%"/>
-                  </div>
-                  <div class="column is-centered has-text-centered">
-                      <img src="static/figures/decomposition_2.png" alt="decomposition_2" width="80%"/>
-                  </div>
-                </div>
-
-
-                <br>
-                <h3 class="title is-4">Style Mixing</h3>
-                <p class="content has-text-centered">
-                  We can also mix the geometry and appearance of two learned concepts. 
-                  By starting to perform the mixing at different timesteps, we can control how much information is passed from the geometry concept 
-                  to the output image. 
-                </p>
-
-                <div id="results-carousel" class="carousel results-carousel">
-                  <div class="column is-centered has-text-centered">
-                    <img src="static/figures/mixing_1.png" alt="mixing_1" width="90%"/>
-                  </div>
-                  <div class="column is-centered has-text-centered">
-                      <img src="static/figures/mixing_2.png" alt="mixing_2" width="90%"/>
-                  </div>
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">What Can it Do?</h2>
+                    <div class="content has-text-centered">
+                    </div>
+                    <h3 class="title is-4">Controlling the Editability with Nested Dropout</h3>
+                    <p class="content has-text-centered">
+                        Using our dropout technique, users can control the balance between the generated image's visual
+                        and text fidelity at inference time.
+                        When a stronger dropout is applied we get a more coarse/semantic representation of our concept
+                        that is more amenable to edits and new compositions.
+                    </p>
                 </div>
             </div>
+            <div id="results-carousel-2" class="carousel results-carousel">
+                <div class="column is-centered has-text-centered">
+                  <img src="static/figures/dropout_0.png" alt="dropout_0" width="80%"/>
+                </div>
+                <div class="column is-centered has-text-centered">
+                    <img src="static/figures/dropout_1.png" alt="dropout_1" width="80%"/>
+                </div>
+                <div class="column is-centered has-text-centered">
+                    <img src="static/figures/dropout_2.png" alt="dropout_2" width="80%"/>
+                </div>
+                <div class="column is-centered has-text-centered">
+                    <img src="static/figures/dropout_3.png" alt="dropout_3" width="80%"/>
+                </div>
+            </div>
+
+            <div class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
+                  <div class="content has-text-centered">
+                  </div>
+                  <h3 class="title is-4">Per-Timestep Decomposition</h3>
+                  <p class="content has-text-centered">
+                      We can illustrate which concept-specific details are captured at different denoising timesteps.
+                      At the early timesteps, NeTI learns to capture coarse details such as the concept's general structure and color scheme.
+                      As we continue along the denoising process, more concept-specific details are added.
+                  </p>
+              </div>
           </div>
+          <div id="results-carousel-3" class="carousel results-carousel">
+              <div class="column is-centered has-text-centered">
+                  <img src="static/figures/decomposition_1.png" alt="decomposition_1" width="80%"/>
+              </div>
+              <div class="column is-centered has-text-centered">
+                  <img src="static/figures/decomposition_2.png" alt="decomposition_2" width="80%"/>
+              </div>
+          </div>
+
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <div class="content has-text-centered">
+                </div>
+                <h3 class="title is-4">Style Mixing</h3>
+                <p class="content has-text-centered">
+                    We can also mix the geometry and appearance of two learned concepts.
+                    By starting to perform the mixing at different timesteps, we can control how much information is passed from the geometry concept
+                    to the output image.
+                </p>
+            </div>
         </div>
-      </div>
+        <div id="results-carousel-4" class="carousel results-carousel">
+            <div class="column is-centered has-text-centered">
+                <img src="static/figures/mixing_1.png" alt="mixing_1" width="90%"/>
+            </div>
+            <div class="column is-centered has-text-centered">
+                <img src="static/figures/mixing_2.png" alt="mixing_2" width="90%"/>
+            </div>
+        </div>
+        </div>
+        </div>
+
     </section>
+
 
     <footer class="footer">
         <div class="columns is-centered">
