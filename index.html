@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <meta property="og:title" content="A Neural Space-Time Representation for Text-to-Image Personalization"/>
+    <meta property="og:url" content="https://NeuralTextualInversion.github.io/NeTI/"/>
+    <meta property="og:image" content="static/images/og_tag_header_image.jpg"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+
+
+    <title>NeTI</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+    <link rel="icon" href="static/figures/teddy_263.jpg">
+
+    <link rel="stylesheet" href="static/css/bulma.min.css">
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+    <script src="static/js/bulma-carousel.min.js"></script>
+    <script src="static/js/bulma-slider.min.js"></script>
+    <script src="static/js/index.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+</head>
+<body>
+
+
+<section class="publication-header">
+    <div class="hero-body">
+        <div class="container is-max-widescreen">
+            <!-- <div class="columns is-centered"> -->
+            <div class="column has-text-centered">
+                <h1 class="title is-1 publication-title">A Neural Space-Time Representation for Text-to-Image
+                    Personalization</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="publication-author-block">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <div class="is-size-3 publication-authors">
+                    </div>
+
+                    <div class="is-size-3 publication-authors">
+                        <span class="author-block"><target="_blank">Anonymous Authors</span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+              
+              <span class="link-block">
+                <a href="" target="_blank"
+                   class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+                            <!-- Colab Link. -->
+                            <span class="link-block">
+                <a href="https://github.com/NeuralTextualInversion/NeTI" target="_blank"
+                   class="external-link button is-normal is-rounded">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+              </a>
+              </span>
+
+                            <!-- <span class="link-block">
+                              <a href=""  target="_blank"
+                                 class="external-link button is-normal is-rounded">
+                                <span class="icon">
+                                    <i class="fas fa-laptop"></i>
+                                </span>
+                                <span>Demo</span>
+                              </a>
+                             </span> -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="hero is-small">
+    <!-- <div class="hero-body"> -->
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <!-- <div id="results-carousel" class="carousel results-carousel"> -->
+                <div class="container">
+                    <div class="item">
+                        <div class="column is-centered has-text-centered">
+                            <img src="static/figures/representative_image.jpg" alt="NeTI"/>
+                            <h2 class="subtitle">
+                                Personalization results of our method under a variety of prompts. Our expressive
+                                representation enables one to generate novel compositions of personalized concepts that
+                                achieve high visual fidelity
+                                and editability without tuning the generative model. The bottom row shows our method's
+                                unique ability to control the reconstruction-editability tradeoff at inference time with
+                                a single trained model.
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <!--  </div> -->
+            </div>
+        </div>
+        <!--  </div> -->
+    </section>
+
+    <section class="section hero is-light">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <!-- div class="item">
+                      <p style="margin-bottom: 30px">
+                    <video poster="" id="tree" autoplay controls muted loop height="100%">
+                      <source src="static/figures/video.mp4"
+                      type="video/mp4">
+                    </video>
+                    </p>
+                    </div -->
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                          A key aspect of text-to-image personalization methods is the manner in which the target
+                          concept is represented within the generative process. This choice greatly affects the visual fidelity, downstream editability,
+                          and disk space needed to store the learned concept. In this paper, we explore a new text-conditioning space that is
+                          dependent on both the denoising process timestep (time) and the denoising U-Net layers (space) and showcase its compelling
+                          properties. A single concept in the space-time representation is composed of hundreds of vectors, one for each combination 
+                          of time and space, making this space challenging to optimize directly. Instead, we propose to implicitly represent a 
+                          concept in this space by optimizing a small neural mapper that receives the current time and space parameters and outputs 
+                          the matching token embedding. In doing so, the entire personalized concept is represented by the parameters of the learned 
+                          mapper, resulting in a compact, yet expressive, representation. Similarly to other personalization methods, the output of 
+                          our neural mapper resides in the input space of the text encoder. We observe that one can significantly improve the 
+                          convergence and visual fidelity of the concept by introducing a textual bypass, where our neural mapper additionally outputs 
+                          a residual that is added to the output of the text encoder. Finally, we show how one can impose an importance-based ordering 
+                          over our implicit representation, providing users control over the reconstruction and editability of the learned concept using 
+                          a single trained model. We demonstrate the effectiveness of our approach over a range of concepts and prompts, showing our 
+                          method's ability to generate high-quality and controllable compositions without fine-tuning any parameters of the generative 
+                          model itself.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+        </div>
+    </section>
+
+    <!-- <section class="hero is-small">
+      <div class="hero-body">
+        <div class="container">
+          <h2 class="title has-text-centered">Video</h2>
+          <center>
+            <iframe width="630" height="354" src="" title="YouTube video player" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen></iframe>
+          </center>
+        </div>
+      </div>
+    </section> -->
+
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container">
+                <h2 class="title has-text-centered">Examples of Personalized Text-to-Image Generation <br> with NeTI
+                </h2>
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div class="column is-centered has-text-centered">
+                        <img src="static/figures/teddy.png" alt="teddy" width="95%"/>
+                    </div>
+                    <div class="column is-centered has-text-centered">
+                        <img src="static/figures/maeve.png" alt="maeve" width="95%"/>
+                    </div>
+                    <div class="column is-centered has-text-centered">
+                        <img src="static/figures/mugs_skulls.png" alt="mugs_skills" width="95%"/>
+                    </div>
+                    <div class="column is-centered has-text-centered">
+                        <img src="static/figures/elephant.png " alt="elephant" width="95%"/>
+                    </div>
+                    <div class="column is-centered has-text-centered">
+                        <img src="static/figures/rainbow_cat.png" alt="rainbow_cat" width="95%"/>
+                    </div>
+                    <div class="column is-centered has-text-centered">
+                        <img src="static/figures/lecun.png" alt="lecun" width="95%"/>
+                    </div>
+                    <div class="column is-centered has-text-centered">
+                        <img src="static/figures/red_bowl.png" alt="red_bowl" width="95%"/>
+                    </div>
+                    <div class="column is-centered has-text-centered">
+                        <img src="static/figures/cat.jpg" alt="cat" width="95%"/>
+                    </div>
+                    <div class="column is-centered has-text-centered">
+                        <img src="static/figures/metal_bird.png" alt="metal_bird" width="95%"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section hero is-light">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">How Does it Work?</h2>
+                    <div class="content has-text-justified">
+                    </div>
+                    <div class="column is-centered has-text-centered">
+                        <img src="static/figures/Overview.png" alt="neti" width="100%"/>
+                    </div>
+                    <ul class="column is-centered has-text-justified">
+                      <li> We introduce a new text-conditioning latent space \(\mathcal{P}^*\) that is dependent on both the
+                           denoising process timestep and the U-Net layers. 
+                      </li>
+                      <br>
+                      <li> This <i>space-time</i> representation is learned implicitly via a small mapping layer.
+                      </li>
+                      <br>
+                      <li> The entire network represents a concept in \(\mathcal{P}^*\) defined by its learned
+                        parameters, resulting in a neural representation for Textual Inversion, which we call NeTI.
+                      </li>
+                      <br>
+                      <li> We also impose an <i>importance-based ordering</i> over our implicit representation, providing control over the reconstruction
+                        and editability of the learned concept at inference time.
+                      </li>
+                    </ul>
+                </div>
+            </div>
+          </p>
+        </div>
+    </section>
+
+    <section class="section hero">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">What Can it Do?</h2>
+                    <div class="content has-text-centered">
+                    </div>
+                    <h3 class="title is-4">Controlling the Editability with Nested Dropout</h3>
+                    <p class="content has-text-centered">
+                        Using our dropout technique, users can control the balance between the generated image's visual
+                        and text fidelity at inference time.
+                        When a stronger dropout is applied we get a more coarse/semantic representation of our concept
+                        that is more amenable to edits and new compositions.
+                    </p>
+                </div>
+            </div>
+            <div id="results-carousel" class="carousel results-carousel">
+                <div class="column is-centered has-text-centered">
+                  <img src="static/figures/dropout_0.png" alt="dropout_0" width="90%"/>
+                </div>
+                <div class="column is-centered has-text-centered">
+                    <img src="static/figures/dropout_1.png" alt="dropout_1" width="90%"/>
+                </div>
+                <div class="column is-centered has-text-centered">
+                    <img src="static/figures/dropout_2.png" alt="dropout_2" width="90%"/>
+                </div>
+                <div class="column is-centered has-text-centered">
+                    <img src="static/figures/dropout_3.png" alt="dropout_3" width="90%"/>
+                </div>
+            </div>
+
+            <div class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
+                  <div class="content has-text-centered">
+                  </div>
+                  <h3 class="title is-4">Per-Timestep Decomposition</h3>
+                  <p class="content has-text-centered">
+                      We can illustrate which concept-specific details are captured at different denoising timesteps.  
+                      At the early timesteps, NeTI learns to capture coarse details such as the concept's general structure and color scheme. 
+                      As we continue along the denoising process, more concept-specific details are added.
+                  </p>
+              </div>
+          </div>
+          <div id="results-carousel" class="carousel results-carousel">
+              <div class="column is-centered has-text-centered">
+                  <img src="static/figures/decomposition_1.png" alt="decomposition_1" width="80%"/>
+              </div>
+              <div class="column is-centered has-text-centered">
+                  <img src="static/figures/decomposition_2.png" alt="decomposition_2" width="80%"/>
+              </div>
+          </div>
+
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <div class="content has-text-centered">
+                </div>
+                <h3 class="title is-4">Style Mixing</h3>
+                <p class="content has-text-centered">
+                    We can also mix the geometry and appearance of two learned concepts. 
+                    By starting to perform the mixing at different timesteps, we can control how much information is passed from the geometry concept 
+                    to the output image. 
+                </p>
+            </div>
+        </div>
+        <div id="results-carousel" class="carousel results-carousel">
+            <div class="column is-centered has-text-centered">
+                <img src="static/figures/mixing_1.png" alt="mixing_1" width="800px"/>
+            </div>
+            <div class="column is-centered has-text-centered">
+                <img src="static/figures/mixing_2.png" alt="mixing_2" width="800px"/>
+            </div>
+        </div>
+
+
+
+    </section>
+
+
+    <footer class="footer">
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content">
+                    <p>
+                        This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                        Commons Attribution-ShareAlike 4.0 International License</a>.
+                    </p>
+                    <p>
+                        Website source code based on the <a href="https://nerfies.github.io/"> Nerfies</a> project page.
+                        If you want to reuse their <a href="https://github.com/nerfies/nerfies.github.io">source code</a>, please credit them appropriately.
+                    </p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </footer>
+
+</body>
+</html>
