@@ -1,0 +1,25 @@
+log:
+  exp_name: exp_name
+  exp_dir: /path/to/experiments
+  save_steps: 250
+data:
+  train_data_dir: /path/to/data/concept
+  placeholder_token: <concept-name>
+  super_category_token: super_category
+  dataloader_num_workers: 8
+model:
+  pretrained_model_name_or_path: CompVis/stable-diffusion-v1-4
+  use_nested_dropout: True
+  nested_dropout_prob: 0.5
+  normalize_mapper_output: True
+  use_positional_encoding: True
+  pe_sigmas: {'sigma_t': 0.03, 'sigma_l': 2.0}
+  num_pe_time_anchors: 10
+  output_bypass: True
+eval:
+  validation_steps: 250
+optim:
+  max_train_steps: 1000
+  learning_rate: 1e-3
+  train_batch_size: 2
+  gradient_accumulation_steps: 4
