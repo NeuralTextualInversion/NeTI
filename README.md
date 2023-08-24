@@ -29,7 +29,7 @@ Official implementation of our NeTI paper.
 
 # Setup
 ## Conda Environment
-Our code relies on the enviornment in the official [Stable Diffusion repository](https://github.com/CompVis/stable-diffusion). To set up their environment, please run:
+Our code relies on the environment in the official [Stable Diffusion repository](https://github.com/CompVis/stable-diffusion). To set up their environment, please run:
 ```
 conda env create -f environment/environment.yaml
 conda activate neti
