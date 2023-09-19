@@ -110,3 +110,17 @@ We use the same evaluation protocol as used in Textual Inversion. The main logic
 # Acknowledgements
 Our code builds on the [diffusers implementation of textual inversion](https://github.com/huggingface/diffusers/tree/main/examples/textual_inversion) 
 and the [unofficial implementation of XTI from cloneofsimo](https://github.com/cloneofsimo/promptplusplus).
+
+
+# Citation
+If you use this code for your research, please cite the following work: 
+```
+@misc{alaluf2023neural,
+      title={A Neural Space-Time Representation for Text-to-Image Personalization}, 
+      author={Yuval Alaluf and Elad Richardson and Gal Metzer and Daniel Cohen-Or},
+      year={2023},
+      eprint={2305.15391},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
